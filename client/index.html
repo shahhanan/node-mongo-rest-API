@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/default.css">
+
+</head>
+
+<body class="container-fluid">
+    <div class="cont">
+        <div id="formOne" class="container container2">
+            <form id="postform" name="postform" class="form" enctype="multipart/form-data">
+                <section class="row">
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="cfname" name="contactFirstName" placeholder="First Name">
+                            <input type="hidden" class="form-control" id="idcust" name="id">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="clname" name="contactLastName" placeholder="Last Name">
+                        </div>
+
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="name" name="customerName" placeholder="Company Name">
+                        </div>
+
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="number" placeholder="Phone Number" name="phoneNumber" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/(\..*)\./g,'$1')">
+                        </div>
+                    </div>
+
+                </section>
+                <section class="row">
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="addressl1" placeholder="Address Line 1" name="addressLine1">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="addressl2" placeholder="AddressLine 2" name="addressLine2">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="city" placeholder="City" name="city">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="state" placeholder="State" name="state">
+                        </div>
+                    </div>
+                </section>
+                <section class="row">
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="postalcode" placeholder="Postal Code" name="postalCode" maxlength="6" oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/(\..*)\./g,'$1')">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="country" placeholder="Country" name="country">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="salesrepnumber" placeholder="Sales Rep Number" name="salesRepEmployeeNumber"
+                                maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/(\..*)\./g,'$1')">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group ">
+                            <span></span>
+                            <input type="text" class="form-control" id="creditlimit" placeholder="Credit Limit" name="creditLimit" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/(\..*)\./g,'$1')">
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="row justify-content-end">
+                    <div class="col-3 text-right">
+                        <input type="button" id="submitbtn" value="Submit" class="btn btn-primary" onclick="prepareDataToPost(postform)">
+                        <input type="hidden" id="submitbtn2" value="Update" class="btn btn-primary" onclick="updateCustomer(postform)">
+                        
+                    </div>
+                </section>
+
+            </form>
+
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Customer Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are You Sure You Want To Delete
+                    <span id="custName"></span> Details.
+                    <input type="hidden"  id="customeridhiddenbutton">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="deletecustomer('customeridhiddenbutton')" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.js"></script>
+<script src="js/ajaxutility.js"></script>
+<script src="js/populate.js"></script>
+
+</html>

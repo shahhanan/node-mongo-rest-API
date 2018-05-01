@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "my first node app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hanan shah",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "*",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  }
+}
